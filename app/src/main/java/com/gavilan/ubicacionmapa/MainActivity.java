@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -64,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(Location location) {
                         txtLat.setText(location.getLatitude() + "");
                         txtLon.setText(location.getLongitude() + "");
+                        Intent intent = new Intent(MainActivity.this,
+                                MapsActivity.class);
+                        intent.putExtra("location",location);
+                        startActivity(intent);
                     }
                 });
     }
